@@ -3,3 +3,13 @@
 
 # build files
 build/
+
+# editor config
+.vscode/
+
+Debug/
+
+*.opendb
+*.db
+*.suo
+Release/

@@ -74,6 +74,11 @@ public:
   ///* the current NIS for laser
   double NIS_laser_;
 
+
+  // kalman filter for laser
+  MatrixXd H_laser_;
+  MatrixXd R_laser_;
+
   /**
    * Constructor
    */
@@ -108,6 +113,15 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  // generate augmented sigma points
+  MatrixXd GenerateSigmaPoints();
+
+  // predict generated sigma points
+  void PredictSigmaPoints(MatrixXd Xsig_aug, double delta_t);
+
+  // predict new state mean and covariance
+  void PredictNewState();
 };
 
 #endif /* UKF_H */
