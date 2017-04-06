@@ -1,3 +1,23 @@
+# result
+
+dataset 1
+
+ RMSE:
+ 0.0668599
+ 0.0719419
+ 0.621861
+ 0.560193
+
+
+dataset2
+
+ RMSE:
+ 0.158821
+ 0.188049
+ 0.231208
+ 0.259617
+
+
 # Unscented Kalman Filter Project Starter Code
 Self-Driving Car Engineer Nanodegree Program
 
