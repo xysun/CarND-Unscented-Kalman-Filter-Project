@@ -75,10 +75,6 @@ public:
   double NIS_laser_;
 
 
-  // kalman filter for laser
-  MatrixXd H_laser_;
-  MatrixXd R_laser_;
-
   /**
    * Constructor
    */
