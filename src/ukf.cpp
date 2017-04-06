@@ -140,12 +140,14 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
 	double delta_t = (meas_package.timestamp_ - time_us_) / 1000000.0;	//dt - expressed in seconds
 	time_us_ = meas_package.timestamp_;
 
-	if (delta_t > 0.1) {
-		std::cout << "big delta t!" << std::endl;
+	while (delta_t > 0.1)
+	{
+		const double dt = 0.05;
+		Prediction(dt);
+		delta_t -= dt;
 	}
-
-	// predict
 	Prediction(delta_t);
+
 
 	// update
 	if (meas_package.sensor_type_ == MeasurementPackage::RADAR && use_radar_) {
@@ -414,7 +416,6 @@ void UKF::UpdateRadar(MeasurementPackage meas_package) {
 
 		// divide by zero???
 		if (abs(px) <= 0.0001 && abs(py) <= 0.0001) {
-			std::cout << "zero!" << std::endl;
 			px = 0.1;
 			py = 0.1;
 		}
